@@ -1,0 +1,73 @@
+<div class="container">
+    <div id="gift-box" class="gift-box" onclick="openGift()">🎁</div>
+    <div id="message" class="message hidden">
+        <h1>Merry Christmas! 🎄✨</h1>
+    </div>
+    <div id="confetti" class="confetti hidden"></div>
+</div>
+
+<!-- "Jingle Bells" Audio -->
+<audio id="music" src="https://archive.org/download/jingle-bells-13/jingle-bells-13.mp3" preload="auto"></audio>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #ffefba, #ffffff);
+}
+
+.container {
+    text-align: center;
+}
+
+.gift-box {
+    font-size: 120px;
+    cursor: pointer;
+    animation: bounce 1.5s infinite;
+}
+
+.message {
+    font-size: 2rem;
+    color: #d62828;
+    margin-top: 20px;
+}
+
+.confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://media.giphy.com/media/3o6ZsUts67fH5QLk3t/giphy.gif') center no-repeat;
+    background-size: cover;
+    z-index: 10;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+// JavaScript Function to handle the gift box click
+function openGift() {
+    // Hide the gift box
+    document.getElementById('gift-box').classList.add('hidden');
+    
+    // Show the message and confetti
+    document.getElementById('message').classList.remove('hidden');
+    document.getElementById('confetti').classList.remove('hidden');
+
+    // Play the music
+    const music = document.getElementById('music');
+    music.play();
+}
